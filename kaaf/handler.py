@@ -195,7 +195,7 @@ def handle(data):
 
     try:
         file = create_pdf(data)
-        mail.send_mail(["okonoimi@itdagene.no", data["mailfrom"]], data, file)
+        mail.send_mail(["okonomi@itdagene.no", data["mailfrom"]], data, file)
     except RuntimeError as e:
         logging.warning(f"Failed to generate pdf with exception: {e}")
         return f"Klarte ikke å generere pdf: {e}", 500

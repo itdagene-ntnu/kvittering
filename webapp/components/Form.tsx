@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Typography, Button, Paper, CircularProgress } from '@material-ui/core';
-import ReceiptIcon from '@material-ui/icons/Receipt';
-import Alert from '@material-ui/lab/Alert';
+import { Typography, Button, Paper, CircularProgress } from '@mui/material';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import Alert from '@mui/lab/Alert';
 
 import Input from './Input';
 import PictureUpload from './PictureUpload';
@@ -66,6 +66,7 @@ const Form = (): JSX.Element => {
         Kvitteringsskjema
       </Typography>
       <Input
+        id="name"
         name="Navn"
         value={name}
         required
@@ -73,6 +74,7 @@ const Form = (): JSX.Element => {
         helperText="Ditt fulle navn, slik kvitteringen viser"
       />
       <Input
+        id="mailFrom"
         name="Din epost"
         value={mailfrom}
         required
@@ -80,18 +82,21 @@ const Form = (): JSX.Element => {
         helperText="Din kopi av skjema går hit"
       />
       <Input
+        id="group"
         name="Gruppe"
         value={group}
         updateForm={setGroup}
         helperText={'Hvilken gruppe du tilhører'}
       />
       <Input
+        id="mailTo"
         name="Økonomiansvarlig"
         value="okonomi@itdagene.no"
         disabled
         updateForm={setMailto}
       />
       <Input
+        id="accountNumber"
         name="Kontonummer"
         value={accountNumber}
         required
@@ -100,6 +105,7 @@ const Form = (): JSX.Element => {
         helperText="Pengene overføres til denne kontoen"
       />
       <Input
+        id="amount"
         name="Beløp"
         value={amount}
         required
@@ -109,6 +115,7 @@ const Form = (): JSX.Element => {
         helperText="Beløpet du ønsker refundert"
       />
       <Input
+        id="date"
         name="Kjøpsdato"
         value={date}
         required
@@ -117,13 +124,14 @@ const Form = (): JSX.Element => {
         helperText="Helst samme som på kvittering"
       />
       <Input
+        id="occasion"
         name="Anledning"
-        multiline
         value={occasion}
         updateForm={setOccasion}
         helperText="I hvilken anledning du har lagt ut"
       />
       <Input
+        id="comment"
         name="Kommentar"
         multiline
         fullWidth

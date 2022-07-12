@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styles from './FileUpload.module.css';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AttachFileIcon from '@material-ui/icons/AttachFile';
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
 
 type Props = {
   updateForm: (value: Array<string>) => void;
@@ -34,6 +34,7 @@ const PictureUpload = ({ updateForm }: Props): JSX.Element => {
       <div className={styles.upload}>
         <label>
           <input
+            id="attachments"
             type="file"
             className={styles.fileInput}
             multiple
@@ -64,7 +65,11 @@ const PictureUpload = ({ updateForm }: Props): JSX.Element => {
       </div>
 
       {images.length > 0 && (
-        <List component="nav" className={styles.uploaded}>
+        <List
+          component="nav"
+          className={styles.uploaded}
+          id="uploadedAttachments"
+        >
           {images.map((image, i) => (
             <div className={styles.uploadedElement} key={image}>
               <ListItem>

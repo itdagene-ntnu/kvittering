@@ -3,3 +3,7 @@ webapp/.next/
 webapp/out/
 venv/
 kaaf/__pycache__/
+.next/
+
+webapp/cypress/videos
+webapp/cypress/screenshots

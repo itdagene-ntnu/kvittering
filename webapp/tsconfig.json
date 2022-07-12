@@ -17,7 +17,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "incremental": true,
+    "types": ["cypress", "cypress-file-upload"]
   },
   "exclude": [
     "node_modules"

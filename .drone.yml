@@ -5,15 +5,15 @@ name: default
 
 steps:
   - name: setup
-    image: node:14
+    image: node:16-slim
     when:
       event:
         - push
     commands:
-      - yarn
+      - yarn --frozen-lockfile
 
   - name: prettier
-    image: node:14
+    image: node:16-slim
     when:
       event:
         - push
@@ -23,7 +23,7 @@ steps:
       - yarn prettier:check
 
   - name: eslint
-    image: node:14
+    image: node:16-slim
     when:
       event:
         - push
@@ -33,7 +33,7 @@ steps:
       - yarn eslint
 
   - name: build
-    image: node:14
+    image: node:16-slim
     when:
       event:
         - push
@@ -43,7 +43,7 @@ steps:
       - yarn build
 
   - name: export
-    image: node:14
+    image: node:16-slim
     when:
       event:
         - push
@@ -52,6 +52,20 @@ steps:
       - build
     commands:
       - yarn export
+
+  - name: cypress
+    image: cypress/included:10.3.0
+    when:
+      event:
+        - push
+    depends_on:
+      - export
+    environment:
+      CYPRESS_RECORD_KEY:
+        from_secret: cypress_record_key
+    commands:
+      - apt-get -y install procps
+      - yarn cypress:ci
 
   - name: docker
     image: plugins/docker
